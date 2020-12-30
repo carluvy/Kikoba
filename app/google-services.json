@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "993021585342",
+    "firebase_url": "https://kikoba-ea19d-default-rtdb.firebaseio.com",
+    "project_id": "kikoba-ea19d",
+    "storage_bucket": "kikoba-ea19d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993021585342:android:5f199eddcb8bed6f76bbef",
+        "android_client_info": {
+          "package_name": "com.coolbanter.kikoba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993021585342-1eg7li03ml7rm4d74e6veotnos5mrfjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYwepRIeRvoeFkakL86pEnuQ5qUzNHEr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993021585342-1eg7li03ml7rm4d74e6veotnos5mrfjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

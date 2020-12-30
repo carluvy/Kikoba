@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Kikoba</string>
+    <string name="name_edt">Name</string>
+    <string name="date_hint">Date</string>
+    <string name="amount_hint">Amount</string>
+    <string name="save_menu">save</string>
+    <string name="insert_menu">Insert</string>
+</resources>
