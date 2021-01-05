@@ -1,4 +1,4 @@
-package com.coolbanter.kikoba
+package com.coolbanter.kikoba.views
 
 
 import android.content.Intent
@@ -9,9 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.coolbanter.kikoba.utils.ContributionAdapter
+import com.coolbanter.kikoba.R
+import com.coolbanter.kikoba.utils.Utils
 import com.coolbanter.kikoba.databinding.ActivityListBinding
+import com.coolbanter.kikoba.model.KikobaContribution
+import com.coolbanter.kikoba.setup.ProfileActivity
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.*
+import java.util.*
 
 
 class ListActivity : AppCompatActivity() {
@@ -28,6 +34,8 @@ class ListActivity : AppCompatActivity() {
 
 
 
+
+
 //        mFirebaseDatabase = FirebaseDatabase.getInstance()
 //        mDatabaseReference = mFirebaseDatabase.reference.child("kikobacontributions")
 
@@ -37,21 +45,61 @@ class ListActivity : AppCompatActivity() {
 
 
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mFirebaseDatabase.reference.child("kikobacontributions")
+        mFirebaseDatabase = Utils.getDatabase()!!
+
+        mDatabaseReference = Utils.getDatabaseReference()!!
+        mDatabaseReference.keepSynced(true)
 
         val query = mDatabaseReference.orderByChild("kikobacontributions")
+        val w = mDatabaseReference.orderByChild("Profile Info")
+
 
         val options = FirebaseRecyclerOptions.Builder<KikobaContribution>()
             .setQuery(query, KikobaContribution::class.java)
             .build()
 
 
+
+
         mAdapter = ContributionAdapter(applicationContext, options)
+//        mAdapter.notifyDataSetChanged()
         mRecyclerview.adapter = mAdapter
 
 
+//        val swipeToDeleteCallback = object : SwipeToDeleteCallback() {
+//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                val pos = viewHolder.adapterPosition
+//                mContributors.removeAt(pos)
+//                mAdapter.notifyItemRemoved(pos)
+//            }
+//        }
+//
+//        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+//        itemTouchHelper.attachToRecyclerView(mRecyclerview)
+
+
+
+
+
+//        mRecyclerview.setOnClickListener {
+//            val intent = Intent(this, EditActivity::class.java)
+//            intent.putExtra("ContributorKey",mDatabaseReference.key)
+//            startActivity(intent)
+//
+//        }
+
+
     }
+
+
+
+
+
+
+//    private fun getRef(position: Int): Int {
+//
+//
+//    }
 
     override fun onStart() {
         super.onStart()
@@ -123,7 +171,13 @@ class ListActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.profile -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
